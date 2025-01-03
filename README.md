@@ -41,17 +41,18 @@ Steps for setting up the home lab:
   1. Create a second VM for the client machine.
   2. Connect it to the internal network.
 
-### 2. Configure Domain Controller
+### 2. Configuring Domain Controller
 
 - Install and configure **Active Directory** to create a domain (e.g., `mydomain.com`).
 - Set up **DHCP** to assign IPs to the internal network.
 - Enable **NAT** to provide internet access for the internal network.
 
-### 3. Add Users with PowerShell
+### 3. Creating Users with PowerShell
 
-- Use the provided `CreateUsers.ps1` script to create:
+- Use the provided `1_CREATE_USERS.ps1` script to create:
   - An Organizational Unit (OU).
-  - 1,000 user accounts programmatically.
+  - 1,000 user accounts programmatically.<br/>
+  <br/><img src="https://i.imgur.com/0mOizJ5.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
 ### 4. Join Client to Domain
 
