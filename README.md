@@ -30,22 +30,41 @@ The lab is designed for educational purposes, offering hands-on experience in ne
 
 Steps for setting up the home lab:
 
-### 1. Setup Virtual Machines
+## 1. Setup the 1st Virtual Machine for the Domain Controller
 
-- **Domain Controller**:
-  1. Create a VM and install Windows Server 2019.
-  2. Configure two network adapters (NAT for internet, Internal Network for private connections).
-  3. Assign a static IP for the internal network.
+- Create a VM and install Windows Server 2019.
+- Configure two network adapters (NAT for internet, Internal Network for private connections).
 
+<!--
 - **Windows 10 Client**:
   1. Create a second VM for the client machine.
   2. Connect it to the internal network.
+-->
 
-### 2. Configuring Domain Controller
+## 2. Configuring Domain Controller
 
-- Install and configure **Active Directory** to create a domain (e.g., `mydomain.com`).
-- Set up **DHCP** to assign IPs to the internal network.
-- Enable **NAT** to provide internet access for the internal network.
+- **Set up IP addressing for the two NICs**
+  
+  I. The external NIC connected to the internet will automatically get an IP from the home router, so no configuration is needed.<br><br>
+  II. For the internal NIC, we manually assign IP Address. I chose to give the IP Address: 172.16.0.1, Subnet Mask: 255.255.255.0, and leave the Default Gateway blank, as the domain controller will serve as the gateway.
+  
+  III. For the DNS Server, we will use the server’s own IP (172.16.0.1) or the loopback address (127.0.0.1), as it will act as its own DNS because when Active Directory is installed, it automatically installs and configures the DNS service.
+  
+  IV. These configurations ensure the internal NIC is ready to connect to the internal network where no other devices are currently connected.<br/>
+  <br/><img src="https://i.imgur.com/rau2e7Z.png" height="80%" width="80%" alt="Active Directory Steps"/><br><br>
+
+- **Rename this PC**
+  
+   I. Right-click the Start menu, select "System," then click "Rename this PC."
+  
+   II. Change the current arbitrary name to "dc" (for Domain Controller), click "Next," and restart the computer to apply the changes.
+
+  
+- **Install and configure Active Directory to create a domain (e.g., mydomain.com).**
+
+- **Set up DHCP to assign IPs to the internal network.**
+
+- **Enable NAT to provide internet access for the internal network.**
 
 ### 3. Creating Users with PowerShell
 
