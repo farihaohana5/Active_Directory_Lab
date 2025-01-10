@@ -73,21 +73,52 @@ Steps for setting up the home lab:
 
   IV. Click Next in all the coming prompts, then click Install.
 
-  <img src="https://i.imgur.com/14ThYpC.png" height="80%" width="80%" alt="Active Directory Steps"/><br><br>
+  <img src="https://i.imgur.com/alJNy3w.png" height="80%" width="80%" alt="Active Directory Steps"/><br><br>
   So we have installed the software for the  Active Directory Domain Services, but we didn't actually create the domain yet. So next we have to do our Post-deployment configuration<br><br>
 
 - **Post-Deployment Configuration**
 
   I. After installation, click the flag icon in the server manager.
   
-  II. Proceed with the wizard by selecting the current server, DC
+  II. Select "Promote this server to a domain controller"
 
-  <img src="https://i.imgur.com/J4Dryw9.png" height="80%" width="80%" alt="Active Directory Steps"/>
+  III. In the Deployment operation choose "Add a new forest" and name your domain (e.g., mydomain.com)
 
-  III. Choose "Active Directory Domain Services" from the roles list
+  <img src="https://i.imgur.com/dh33KCU.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
-  IV. Click Next in all the coming prompts, then click Install.
+  IV. Proceed with default settings, set a password, and click Install
 
+  VI. The server will restart automatically after the configuration
+
+  <img src="https://i.imgur.com/TQuqGkC.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  We will use the built-in administrator account (mydomain\Administrator) to log in with the password that we have set before. So next, we will create our own dedicated Domain Admin account instead of using the built-in Administrator 
+  account.<br><br>
+
+- **Create a Dedicated Domain Admin Accoun**
+
+  I. Go to  "Start" --> "Windows Administrative Tool" --> "Active Directory Users and Computers" 
+  
+  II. Right click on our domain (mydomain.com) and click "Create an Organizational Unit (OU)" to put our admin account in. Name the OU (e.g Admins)
+
+  III. In the Deployment operation choose "Add a new forest" and name your domain (e.g., mydomain.com)
+
+  <img src="https://i.imgur.com/dh33KCU.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  IV. Proceed with default settings, set a password, and click Install
+
+  VI. The server will restart automatically after the configuration
+
+  <img src="https://i.imgur.com/TQuqGkC.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  We will use the built-in administrator account (mydomain\Administrator) to log in with the password that we have set before. So next, we will create our own dedicated Domain Admin account instead of using the built-in Administrator 
+  account.<br><br>
+
+
+
+
+
+ 
 - **Set up DHCP to assign IPs to the internal network.**
 
 - **Enable NAT to provide internet access for the internal network.**
