@@ -101,19 +101,19 @@ Steps for setting up the home lab:
   
   II. Right click on our domain (mydomain.com) and click "Create an Organizational Unit (OU)" to put our admin account in. Name the OU (e.g Admins)
 
-  III. In the Deployment operation choose "Add a new forest" and name your domain (e.g., mydomain.com)
+  III. Within the OU, we will create a new user (e.g., your name) and assign it a username and then set password
 
-  <img src="https://i.imgur.com/dh33KCU.png" height="80%" width="80%" alt="Active Directory Steps"/>
+  <img src="https://i.imgur.com/ch4EWAS.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
-  IV. Proceed with default settings, set a password, and click Install
+  In the logon name I have given "a" infront to signify that this is an admin account for the user "fohana"
 
-  VI. The server will restart automatically after the configuration
+  IV. 
+
+  VI. 
 
   <img src="https://i.imgur.com/TQuqGkC.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
-  We will use the built-in administrator account (mydomain\Administrator) to log in with the password that we have set before. So next, we will create our own dedicated Domain Admin account instead of using the built-in Administrator 
-  account.<br><br>
-
+ 
 
 
 
