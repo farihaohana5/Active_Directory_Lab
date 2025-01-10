@@ -95,7 +95,7 @@ Steps for setting up the home lab:
   We will use the built-in administrator account (mydomain\Administrator) to log in with the password that we have set before. So next, we will create our own dedicated Domain Admin account instead of using the built-in Administrator 
   account.<br><br>
 
-- **Create a Dedicated Domain Admin Accoun**
+- **Create a Dedicated Domain Admin Account**
 
   I. Go to  "Start" --> "Windows Administrative Tool" --> "Active Directory Users and Computers" 
   
@@ -105,18 +105,20 @@ Steps for setting up the home lab:
 
   <img src="https://i.imgur.com/ch4EWAS.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
-  In the logon name I have given "a" infront to signify that this is an admin account for the user "fohana"
+  In the logon name I have given "a" infront to signify that this is an admin account for the user "fohana". So in the next photo we see our account.
 
-  IV. 
+  <img src="https://i.imgur.com/exuct7n.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
-  VI. 
+  Now, we have an account but it's not an admin yet. To make it domain admin we Right-click the user account → click "Properties" → click "Member Of" → click "Add" → Write "Domain Admins", then apply the settings. So now we have our very own domain admin account.<br><br>
 
-  <img src="https://i.imgur.com/TQuqGkC.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
+- **Log in with the New Domain Admin Account**
+
+  I. Sign out of the domain controller and Log in using our new domain admin account credentials
+
+  <img src="https://i.imgur.com/l4YSAS3.png" height="80%" width="80%" alt="Active Directory Steps"/>
+  
  
-
-
-
 
  
 - **Set up DHCP to assign IPs to the internal network.**
