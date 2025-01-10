@@ -116,9 +116,14 @@ Steps for setting up the home lab:
 
   I. Sign out of the domain controller and Log in using our new domain admin account credentials
 
-  <img src="https://i.imgur.com/l4YSAS3.png" height="80%" width="80%" alt="Active Directory Steps"/>
+  <img src="https://i.imgur.com/l4YSAS3.png" height="80%" width="80%" alt="Active Directory Steps"/><br><br>
+
+
+- **Install Remote Access (NAT) in the Domain Controller**
+
+  I. 
+
   
- 
 
  
 - **Set up DHCP to assign IPs to the internal network.**
