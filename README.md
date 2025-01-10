@@ -57,10 +57,36 @@ Steps for setting up the home lab:
   
    I. Right-click the Start menu, select "System," then click "Rename this PC."
   
-   II. Change the current arbitrary name to "dc" (for Domain Controller), click "Next," and restart the computer to apply the changes.
+   II. Change the current arbitrary name to "dc" (for Domain Controller), click "Next," and restart the computer to apply the changes.<br><br>
+
 
   
-- **Install and configure Active Directory to create a domain (e.g., mydomain.com).**
+- **Install Active Directory Domain Services (AD DS) to create a domain (e.g., mydomain.com).**
+
+  I. Open "Add Roles and Features" in the server manager
+  
+  II. Proceed with the wizard by selecting the current server, DC
+
+  <img src="https://i.imgur.com/J4Dryw9.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  III. Choose "Active Directory Domain Services" from the roles list
+
+  IV. Click Next in all the coming prompts, then click Install.
+
+  <img src="https://i.imgur.com/14ThYpC.png" height="80%" width="80%" alt="Active Directory Steps"/><br><br>
+  So we have installed the software for the  Active Directory Domain Services, but we didn't actually create the domain yet. So next we have to do our Post-deployment configuration<br><br>
+
+- **Post-Deployment Configuration**
+
+  I. After installation, click the flag icon in the server manager.
+  
+  II. Proceed with the wizard by selecting the current server, DC
+
+  <img src="https://i.imgur.com/J4Dryw9.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  III. Choose "Active Directory Domain Services" from the roles list
+
+  IV. Click Next in all the coming prompts, then click Install.
 
 - **Set up DHCP to assign IPs to the internal network.**
 
