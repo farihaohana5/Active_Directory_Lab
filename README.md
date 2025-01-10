@@ -158,10 +158,6 @@ Steps for setting up the home lab:
 2. Verify user accounts in Active Directory.
 3. Check DHCP leases and NAT configurations.
 
-## Files
-
-- `CreateUsers.ps1`: PowerShell script to create Active Directory users.
-- `README.md`: Project documentation (this file).
 
 ## Troubleshooting
 
