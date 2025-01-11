@@ -142,9 +142,33 @@ Steps for setting up the home lab:
   <img src="https://i.imgur.com/Vh0RVhl.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
   For the ease of differentiating the 2 network adapters, I renamed the network adapters, with suitable names, beforehand.<br><br><br><br>
+  
  
-- **Set up DHCP to assign IPs to the internal network.**
+- **Install and Configure the DHCP Server on DC**
 
+  DHCP will allow our internal network clients to get an IP address that will let them get on the internet and browse the internet even though they are in the private internal network just like in the offices/schools.
+
+  I. Open "Add Roles and Features" in the server manager
+
+  II. Select our server (DC), then select the "DHCP Server" role, and then proceed with the installation.
+
+  <img src="https://i.imgur.com/e3CkID3.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  After installation, we need to set up our scope. We will creata a scope that'll give IP addresses in the range 172.16.0.100 - 172.1.0.200
+
+  III. Open "DHCP" from "Tools" in the server manager.
+
+  IV. Expand the DHCP server (dc.mydomain.com), right click on IPv4 and select "New Scope". I named the scope using the range of IP addresses that it will assign.
+  
+  V. Set the start and end IP addresses, subnet mask (/24 or 255.255.255.0 in my case), and exclusions if you want to exclude any IP addresses (optional).
+
+  VI. Set the lease duration (e.g., 8 days for a lab environment; shorter for dynamic environments like cafes). Lease duration determines how long a device/computer can hold on a particular IP address before it needs to be refreshed.
+
+  VII. Click "Yes" to configuring the DHCP options
+
+  VIII. The Domain Controller (DC) will forward traffic from the internal network clients to the internet, so the clients are going to use the Internal NIC (IP Addr: 172.16.0.1) of the Domain Controller as their Default gateway. Then click "Add"
+  
+ 
 - **Enable NAT to provide internet access for the internal network.**
 
 ### 3. Creating Users with PowerShell
