@@ -88,7 +88,7 @@ Steps for setting up the home lab:
 
   IV. Proceed with default settings, set a password, and click Install
 
-  VI. The server will restart automatically after the configuration
+  V. The server will restart automatically after the configuration
 
   <img src="https://i.imgur.com/TQuqGkC.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
@@ -119,14 +119,29 @@ Steps for setting up the home lab:
   <img src="https://i.imgur.com/l4YSAS3.png" height="80%" width="80%" alt="Active Directory Steps"/><br><br>
 
 
-- **Install Remote Access (RAS/NAT) in the Domain Controller**
+- **Install and Configure Remote Access (RAS/NAT) in the Domain Controller**
+
+  The purpose of installing RAS/NAT is to enable a Windows 10 client (which we'll make later) on a private virtual network to access the internet via the domain controller.
 
   I. Open "Add Roles and Features" in the server manager
 
   II. Select the current server and install the "Remote Access" role
 
   III. For the role services, select "DirectAccess and VPN (RAS) " and "Routing". Then proceed with the installation.
+
+  <img src="https://i.imgur.com/MiwiBFY.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  IV. After installation, Go to Tools in the server manager → "Routing and Remote Access" 
   
+  V. Right-click on "DC" on the left panel and select "Configure and Enable Routing and Remote Access"
+
+  VI. Choose "NAT" to allow internal clients to connect to the internet using 1 public IP address
+
+  VII. Select the appropriate public interface to connect to the internet, then finish the setup
+
+  <img src="https://i.imgur.com/Vh0RVhl.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  For the ease of differentiating the 2 network adapters, I renamed the network adapters, with suitable names, beforehand.<br><br><br><br>
  
 - **Set up DHCP to assign IPs to the internal network.**
 
