@@ -119,12 +119,14 @@ Steps for setting up the home lab:
   <img src="https://i.imgur.com/l4YSAS3.png" height="80%" width="80%" alt="Active Directory Steps"/><br><br>
 
 
-- **Install Remote Access (NAT) in the Domain Controller**
+- **Install Remote Access (RAS/NAT) in the Domain Controller**
 
-  I. 
+  I. Open "Add Roles and Features" in the server manager
 
+  II. Select the current server and install the "Remote Access" role
+
+  III. For the role services, select "DirectAccess and VPN (RAS) " and "Routing". Then proceed with the installation.
   
-
  
 - **Set up DHCP to assign IPs to the internal network.**
 
