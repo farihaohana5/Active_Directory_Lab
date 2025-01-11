@@ -162,14 +162,23 @@ Steps for setting up the home lab:
   
   V. Set the start and end IP addresses, subnet mask (/24 or 255.255.255.0 in my case), and exclusions if you want to exclude any IP addresses (optional).
 
+  <img src="https://i.imgur.com/aeHHv17.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+
   VI. Set the lease duration (e.g., 8 days for a lab environment; shorter for dynamic environments like cafes). Lease duration determines how long a device/computer can hold on a particular IP address before it needs to be refreshed.
 
   VII. Click "Yes" to configuring the DHCP options
 
   VIII. The Domain Controller (DC) will forward traffic from the internal network clients to the internet, so the clients are going to use the Internal NIC (IP Addr: 172.16.0.1) of the Domain Controller as their Default gateway. Then click "Add"
-  
- 
-- **Enable NAT to provide internet access for the internal network.**
+
+  IX. Use the domain controller’s IP address for the DNS server, as it also runs DNS for the Active Directory.
+
+  X. Activate the scope during setup. Right-click the DHCP server and select Authorize, then refresh the view to confirm that the IPv4 scope is active (green icon).
+
+  <img src="https://i.imgur.com/j8girmY.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  If we check the Address leases under IPv4 scope, we will see that there are no leases yet since there are no client computers yet.
+
 
 ### 3. Creating Users with PowerShell
 
