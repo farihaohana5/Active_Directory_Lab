@@ -196,15 +196,34 @@ The last thing we need to do is create a Virtual machine for the Window 10 clien
 - **Set Up Virtual Machine, and name it Client1**
 
 - **Configure Networking, that is set network adapter to Internal Network for isolation. This ensures the VM will obtain its IP address via DHCP from the domain controller.**
+
+- **Verifying Network Configuration in Client1**
   
-  I. The external NIC connected to the internet will automatically get an IP from the home router, so no configuration is needed.<br><br>
-  II. For the internal NIC, we manually assign IP Address. I chose to give the IP Address: 172.16.0.1, Subnet Mask: 255.255.255.0, and leave the Default Gateway blank, as the domain controller will serve as the gateway.
+  I. Log into Client1 using one of the users created previously.
   
-  III. For the DNS Server, we will use the server’s own IP (172.16.0.1) or the loopback address (127.0.0.1), as it will act as its own DNS because when Active Directory is installed, it automatically installs and configures the DNS service.
+  II. Run ipconfig in the command prompt to verify IP address assignment. We will see that the default gateway of client1 is the internal NIC of the Domain Controller.
+
+  III. To test connectivity ping external sites (e.g., google.com) to confirm DNS and internet access and ping the domain controller (mydomain.com) to ensure local network connectivity. If successful, then it means that we have connectivity from the windows client PC all the way to the default gateway (which is the domain controller), and the domain controller is properly NAT-ing it and forwarding it out to the Internet
   
   
+- **Rename PC and Join Domain**
+  
+  I. Right click start menu -> System -> Rename this PC (advanced) -> Click 'change' in System Properties. Rename PC to client1, and join the domain mydomain.com
+
+   <img src="https://i.imgur.com/SzI98Et.png" height="80%" width="80%" alt="Active Directory Steps"/>
+  
+  II. Use a domain user account or domain admin credentials to join. Restart Client1 VM.
+
+  III. On the Domain Controller, Check Active Directory Users and Computers for the new client under Computers.
+
+  <img src="https://i.imgur.com/Bra34ja.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  IV. On the Domain Controller, Verify the client has obtained a DHCP lease under DHCP → Address Leases
+
+  <img src="https://i.imgur.com/Bra34ja.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
 
+   
 
 ## Network Diagram
 
