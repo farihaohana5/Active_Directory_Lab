@@ -2,14 +2,23 @@
 
 This repository provides a detailed guide to setting up a home lab environment for learning and testing Active Directory concepts using Oracle VirtualBox.
 
+## Network Diagram
+
+```text
+[Internet] 
+    | 
+[Domain Controller (Server 2019)]
+    | (Internal Network)
+[Client Machine (Windows 10)]
+```
+
+
 ## Overview
 
 This project simulates a small corporate network, including:
 - A **Domain Controller (DC)** running Windows Server 2019.
 - A **Client Machine** running Windows 10.
 - Features like Active Directory, DHCP, NAT, and user management.
-
-The lab is designed for educational purposes, offering hands-on experience in networking and system administration.
 
 ## Prerequisites
 
@@ -141,7 +150,7 @@ Steps for setting up the home lab:
 
   <img src="https://i.imgur.com/Vh0RVhl.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
-  For the ease of differentiating the 2 network adapters, I renamed the network adapters, with suitable names, beforehand.<br><br><br><br>
+  For the ease of differentiating the 2 network adapters, I renamed the network adapters, with suitable names, beforehand.<br><br>
   
  
 - **Install and Configure the DHCP Server on DC**
@@ -199,9 +208,9 @@ The last thing we need to do is create a Virtual machine for the Window 10 clien
 
 - **Verifying Network Configuration in Client1**
   
-  I. Log into Client1 using one of the users created previously.
-  
-  II. Run ipconfig in the command prompt to verify IP address assignment. We will see that the default gateway of client1 is the internal NIC of the Domain Controller.
+  I. When the Windows starts up, run ipconfig in the command prompt to verify IP address assignment. We will see that the default gateway of client1 is the internal NIC of the Domain Controller.
+
+  <img src="https://i.imgur.com/689OECw.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
   III. To test connectivity ping external sites (e.g., google.com) to confirm DNS and internet access and ping the domain controller (mydomain.com) to ensure local network connectivity. If successful, then it means that we have connectivity from the windows client PC all the way to the default gateway (which is the domain controller), and the domain controller is properly NAT-ing it and forwarding it out to the Internet
   
@@ -212,7 +221,7 @@ The last thing we need to do is create a Virtual machine for the Window 10 clien
 
    <img src="https://i.imgur.com/SzI98Et.png" height="80%" width="80%" alt="Active Directory Steps"/>
   
-  II. Use a domain user account or domain admin credentials to join. Restart Client1 VM.
+  II. Use a domain user account or domain admin credentials to join. Restart Client1 VM, and then we can Log into Client1 Windows PC/VM using one of the users created previously.
 
   III. On the Domain Controller, Check Active Directory Users and Computers for the new client under Computers.
 
@@ -220,36 +229,23 @@ The last thing we need to do is create a Virtual machine for the Window 10 clien
 
   IV. On the Domain Controller, Verify the client has obtained a DHCP lease under DHCP → Address Leases
 
-  <img src="https://i.imgur.com/Bra34ja.png" height="80%" width="80%" alt="Active Directory Steps"/>
+  <img src="https://i.imgur.com/VMi8VkF.png" height="80%" width="80%" alt="Active Directory Steps"/>
+
+  We can see that the IP address 176.16.0.100 has been given to the Client1 by the Domain Controller DHCP. Remember while running ipconfig in client1 PC, we saw that its IP address is 176.16.0.100. This means that our Network Setup is working perfectly the way we wanted.<br><br>
+
+
+  ## Outcome
+
+  **A functional corporate-style network environment with:**
+
+    - A domain controller managing authentication, DHCP, DNS, NAT
+    
+    - A Windows 10 client joined to the domain
+      
+    - Working DNS, DHCP, and NAT for internet access
 
 
    
 
-## Network Diagram
-
-```text
-[Internet] 
-    | 
-[Domain Controller (Server 2019)]
-    | (Internal Network)
-[Client Machine (Windows 10)]
-```
-
-## Verification
-
-1. Test internet connectivity from the client.
-2. Verify user accounts in Active Directory.
-3. Check DHCP leases and NAT configurations.
-
-
-## Troubleshooting
-
-- **Client not receiving an IP address**:
-  - Verify DHCP scope and settings.
-  - Restart DHCP services on the domain controller.
-
-- **Unable to join domain**:
-  - Check network connectivity.
-  - Ensure the domain name and credentials are correct.
 
 
