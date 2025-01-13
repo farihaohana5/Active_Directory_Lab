@@ -182,15 +182,29 @@ Steps for setting up the home lab:
 
 ### 3. Creating Users with PowerShell
 
-- Use the provided `1_CREATE_USERS.ps1` script to create:
-  - An Organizational Unit (OU).
-  - 1,000 user accounts programmatically.<br/>
-  <br/><img src="https://i.imgur.com/0mOizJ5.png" height="80%" width="80%" alt="Active Directory Steps"/>
+- Run the provided `1_CREATE_USERS.ps1` script to create 1000 users programmatically in Active Directory.
+  <img src="https://i.imgur.com/0mOizJ5.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
-### 4. Join Client to Domain
+- Verify the users in Active Directory by going to Start -> Windows administration tools -> Active Directory Users and Computers -> expand mydomain.com -> _Users. And the admin accounts can be found under ADMINS.
+  <img src="https://i.imgur.com/EDfPMiA.png" height="80%" width="80%" alt="Active Directory Steps"/><br><br>
 
-- Configure the Windows 10 client to join the domain.
-- Log in using the domain user accounts.
+The last thing we need to do is create a Virtual machine for the Window 10 client. This acts as a workstation for a user, meaning that it acts as a client machine in the corporate network and demonstrates how a workstation can interact with the domain, including logging in using accounts from the Active Directory.<br><br>
+
+
+## 4. Creating a Windows 10 VM in VirtualBox
+
+- **Set Up Virtual Machine, and name it Client1**
+
+- **Configure Networking, that is set network adapter to Internal Network for isolation. This ensures the VM will obtain its IP address via DHCP from the domain controller.**
+  
+  I. The external NIC connected to the internet will automatically get an IP from the home router, so no configuration is needed.<br><br>
+  II. For the internal NIC, we manually assign IP Address. I chose to give the IP Address: 172.16.0.1, Subnet Mask: 255.255.255.0, and leave the Default Gateway blank, as the domain controller will serve as the gateway.
+  
+  III. For the DNS Server, we will use the server’s own IP (172.16.0.1) or the loopback address (127.0.0.1), as it will act as its own DNS because when Active Directory is installed, it automatically installs and configures the DNS service.
+  
+  
+
+
 
 ## Network Diagram
 
