@@ -4,13 +4,7 @@ This repository provides a detailed guide to setting up a home lab environment f
 
 ## Network Diagram
 
-```text
-[Internet] 
-    | 
-[Domain Controller (Server 2019)]
-    | (Internal Network)
-[Client Machine (Windows 10)]
-```
+<img src="https://i.imgur.com/4iXgrER.png" height="80%" width="80%" alt="Active Directory Steps"/>
 
 
 ## Overview
